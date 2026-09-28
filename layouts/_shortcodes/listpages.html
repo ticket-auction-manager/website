@@ -1,0 +1,28 @@
+{{- $pages := (or (where site.RegularPages "Section" (.Get 0)) (page.RegularPages)) -}}
+{{- $limit := .Get 1 | default 0 -}}
+{{- $show := .Get 2 | default "neither" -}}
+
+{{- if gt $limit 0 -}}
+{{- $pages = $pages | first $limit -}}
+{{- end -}}
+
+<ul class="py-1 flex flex-col gap-1">
+  {{- range $pages }}
+  <li>
+    {{- if .RelPermalink }}
+    <a href="{{ .RelPermalink }}">
+    <h2 class="text-lg font-bold">{{ .Title }}</h2>
+    </a>
+    {{- else }}
+    <h2 class="text-lg font-bold">{{ .Title }}</h2>
+    {{- end }}
+    <div>
+      {{- if eq $show "description" }}
+      {{ .Description }}
+      {{- else if eq $show "summary" }}
+      {{ .Summary }}
+      {{- end }}
+    </div>
+  </li>
+  {{- end }}
+</ul>

@@ -1,0 +1,40 @@
+baseURL = 'https://ticketauctionmanager.org/'
+locale = 'en-us'
+title = 'Ticket Auction Manager'
+
+[params]
+slogan = 'A simple and elegant solution for managing your in-person benefit auctions.'
+
+[params.buttonstyle]
+gray = "px-2 py-1 color-black bg-gray-300 border border-gray-800 rounded hover:bg-gray-400 cursor-pointer"
+white = "px-2 py-1 color-black bg-white border border-gray-700 rounded hover:bg-gray-200 cursor-pointer"
+blue = "px-2 py-1 color-black bg-blue-300 border border-gray-700 rounded hover:bg-blue-400 cursor-pointer"
+yellow = "px-2 py-1 color-black bg-yellow-300 border border-gray-700 rounded hover:bg-yellow-400 cursor-pointer"
+green = "px-2 py-1 color-black bg-green-300 border border-gray-700 rounded hover:bg-green-400 cursor-pointer"
+orange = "px-2 py-1 color-black bg-orange-300 border border-gray-700 rounded hover:bg-orange-400 cursor-pointer"
+purple = "px-2 py-1 color-black bg-purple-300 border border-gray-700 rounded hover:bg-purple-400 cursor-pointer"
+red = "px-2 py-1 color-black bg-red-300 border border-gray-700 rounded hover:bg-red-400 cursor-pointer"
+
+[build]
+  [build.buildStats]
+    enable = true
+  [[build.cachebusters]]
+    source = 'assets/notwatching/hugo_stats\.json'
+    target = 'css'
+  [[build.cachebusters]]
+    source = '(postcss|tailwind)\.config\.js'
+    target = 'css'
+  [[build.cachebusters]]
+    source = 'assets/hugo/hugo_stats\\.json'
+    target = '(css|scss)'
+[module]
+  [[module.mounts]]
+    source = 'assets'
+    target = 'assets'
+  [[module.mounts]]
+    disableWatch = true
+    source = 'hugo_stats.json'
+    target = 'assets/notwatching/hugo_stats.json'
+[security]
+  [security.exec]
+    allow = ['^(dart-)?sass$', '^go$', '^git$', '^node$', '^postcss$', '^tailwindcss$']
