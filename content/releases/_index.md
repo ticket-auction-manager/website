@@ -9,4 +9,4 @@ weight = 3
 
 Below are the releases of Ticket Auction Manager, along with links to the Github page as well as the common binaries of each release.
 
-{{< listpages >}}
+{{< listpages releases 0 summary >}}
